@@ -13,18 +13,19 @@
                     <li>
                         <a href="{{route('dashboard')}}" class="waves-effect">
                             <i class="mdi mdi-view-dashboard"></i>
-                            <span class="badge rounded-pill bg-primary float-end">2</span>
                             <span>Dashboard</span>
                         </a>
                     </li>
 
                     <li>
                         <a href="javascript: void(0);" class="has-arrow waves-effect">
-                            <i class="mdi mdi-account"></i>
-                            <span>Employee</span>
+                            <i class="mdi mdi-view-dashboard"></i>
+                            <span>Home</span>
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="/tuiofghjkgkfg"> All Employees</a></li>
+                            <li><a href="{{route('banner')}}"> Banner</a></li>
+                            <li><a href="{{route('short.info')}}"> Short Info</a></li>
+                            <li><a href="{{route('home.notice')}}"> Notice</a></li>
                         </ul>
                     </li>
 

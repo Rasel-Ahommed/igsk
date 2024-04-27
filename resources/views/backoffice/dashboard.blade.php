@@ -1,6 +1,6 @@
 @extends('backoffice.layout.app')
 
-@section('title', 'Home Page')
+@section('title', 'Dashboard')
 
 @section('content')
 

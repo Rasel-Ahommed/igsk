@@ -14,19 +14,31 @@
                 <div class="navbar-brand-box">
                     <a href="" class="logo logo-dark">
                         <span class="logo-sm">
-                            <img src="assets/images/logo-sm.png" alt="" height="22">
+                            <img style="width: 8rem;
+                            height: auto;
+                            background: white;
+                            border-radius: 2px;"  alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="assets/images/logo-dark.png" alt="" height="17">
+                            <img style="width: 8rem;
+                            height: auto;
+                            background: white;
+                            border-radius: 2px;"  alt="" height="17">
                         </span>
                     </a>
 
                     <a href="" class="logo logo-light">
                         <span class="logo-sm">
-                            <img src="assets/images/logo-sm.png" alt="" height="22">
+                            <img style="width: 8rem;
+                            height: auto;
+                            background: white;
+                            border-radius: 2px;"  alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="assets/images/logo-light.png" alt="" height="18">
+                            <img style="width: 8rem;
+                            height: auto;
+                            background: white;
+                            border-radius: 2px;" src="{{asset('frontendData/asset/image/logo/logo.webp')}}" alt="" height="18">
                         </span>
                     </a>
                 </div>
@@ -36,7 +48,7 @@
                     <i class="mdi mdi-menu"></i>
                 </button>
 
-                <div class="d-none d-sm-block">
+                {{-- <div class="d-none d-sm-block">
                     <div class="dropdown dropdown-topbar pt-3 mt-1 d-inline-block">
                         <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -51,12 +63,12 @@
                             <a class="dropdown-item" href="#">Separated link</a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <div class="d-flex">
 
-                <!-- App Search-->
+                {{-- <!-- App Search-->
                 <form class="app-search d-none d-lg-block">
                     <div class="position-relative">
                         <input type="text" class="form-control" placeholder="Search...">
@@ -86,11 +98,11 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> --}}
 
 
 
-                <div class="dropdown d-none d-md-block ms-2">
+                {{-- <div class="dropdown d-none d-md-block ms-2">
                     <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <img class="me-2" src="assets/images/flags/us_flag.jpg" alt="Header Language"
@@ -128,7 +140,7 @@
                                 height="12"> <span class="align-middle"> Russian </span>
                         </a>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="dropdown d-none d-lg-inline-block">
                     <button type="button" class="btn header-item noti-icon waves-effect"
@@ -137,7 +149,7 @@
                     </button>
                 </div>
 
-                <div class="dropdown d-inline-block ms-1">
+                {{-- <div class="dropdown d-inline-block ms-1">
                     <button type="button" class="btn header-item noti-icon waves-effect"
                         id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
@@ -252,7 +264,7 @@
                             </a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
 
                 <div class="dropdown d-inline-block">

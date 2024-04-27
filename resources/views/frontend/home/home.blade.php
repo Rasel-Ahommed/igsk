@@ -11,6 +11,7 @@
 <header>
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2500">
       <div class="carousel-indicators">
+        
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
           aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
@@ -19,52 +20,32 @@
           aria-label="Slide 3"></button>
       </div>
       <div class="carousel-inner">
-        <div class="carousel-item active"
-          style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./asset/image/work-img/carousel-1.jpg');">
+        @foreach ($datas as $index => $data)
+        @php
+            $image_p = str_replace('\\','/', $data->image );
+        @endphp
+        <div class="carousel-item{{ $index === 0 ? ' active' : '' }}"
+          style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{$image_p}}');">
           <div class="carousel-caption">
-            <h1 class="pb-md-3">Empowering minds, shaping futures</h1>
+            <h1 class="pb-md-3">{{$data->code_line}}</h1>
             <div class="d-flex justify-content-center gap-2">
-              <button class="btn-learn btn btn-md">
-                Learn more
-              </button>
-              <button class="btn-more btn btn-md">
-                Read more
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item"
-          style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./asset/image/work-img/carousel-2.jpg')">
-          <div class="carousel-caption">
-            <h1 class="pb-md-3">Empowering minds, shaping futures</h1>
-            <div class="d-flex justify-content-center gap-2">
-              <button class="btn-learn btn btn-md">
-                Learn more
-              </button>
-              <button class="btn-more btn btn-md">
-                Read more
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item"
-          style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./asset/image/work-img/carousel-3.jpg')">
-          <div class="carousel-caption">
-            <h1 class="pb-md-3">Empowering minds, shaping futures</h1>
-            <div class="d-flex justify-content-center gap-2">
-              <a href="#" class="btn-learn">
-                <button class="btn btn-md">
+              <a href="">
+                <button class="btn-learn btn btn-md">
                   Learn more
                 </button>
               </a>
-              <a href="#" class="btn-more">
-                <button class="btn btn-md">
+              
+              <a href="">
+                <button class="btn-more btn btn-md">
                   Read more
                 </button>
               </a>
+              
             </div>
           </div>
         </div>
+
+      @endforeach
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -85,43 +66,38 @@
     <div class="all-info-list container">
       <div class="row">
         <div class="col-lg-3">
-          <!-- <div class="quick-info-board">
-            <div class="card p-3">
-              <img src="./asset/image/work-img/scachpen.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5>Quick Info</h5>
-                <h6>Sunday to Thursday:</h6>
-                <li>Early year (PG to Kinder II): 8.30 am to 11.30 am.</li>
-                <li>All grades: 8.30 am to 3.00 pm.</li>
-              </div>
-            </div>
-          </div> -->
+
           <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
-            <div class="carousel-indicators">
+            {{-- <div class="carousel-indicators">
+             
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
+              aria-current="true" aria-label="Slide "></button>
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
                 aria-label="Slide 2"></button>
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
                 aria-label="Slide 3"></button>
-            </div>
+            </div> --}}
             <div class="carousel-inner">
-              <div class="carousel-item active">
+
+              @foreach ($shortInfos as $index => $shortInfo)
+                  
+              
+              <div class="carousel-item {{ $index === 0 ? ' active' : '' }}">
                 <div class="carousel-caption">
                   <div class="quick-info-board">
                     <div class="card p-3">
-                      <img src="./asset/image/work-img/scachpen.png" class="card-img-top" alt="..." loading="lazy">
+                      <img src="{{$shortInfo->image}}" class="card-img-top" alt="..." loading="lazy">
                       <div class="card-body">
-                        <h5>Quick Info - 1</h5>
-                        <h6>Sunday to Thursday:</h6>
-                        <li>Early year (PG to Kinder II): 8.30 am to 11.30 am.</li>
-                        <li>All grades: 8.30 am to 3.00 pm.</li>
+                        <h5>{{$shortInfo->title}}</h5>
+                        <h6>{{$shortInfo->sub_title}}</h6>
+                        {!!$shortInfo->details!!}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="carousel-item">
+              @endforeach
+              {{-- <div class="carousel-item">
                 <div class="carousel-caption">
                   <div class="quick-info-board">
                     <div class="card p-3">
@@ -150,7 +126,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> --}}
             </div>
             <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
               data-bs-slide="prev">
@@ -175,48 +151,56 @@
             </p>
           </div>
         </div>
+                @php
+                  use Carbon\Carbon;
+                  $createdAt = Carbon::parse($notices[0]->created_at);
+
+                  $week = Carbon::parse($createdAt)->weekNumberInMonth;
+                  $ordinals = [
+                    1 => '1st',
+                    2 => '2nd',
+                    3 => '3rd',
+                    4 => '4th',
+                    5 =>  '5th',
+                  ];
+                  $monthName = $createdAt->format('F');
+                  
+                @endphp
         <div class="col-lg-4">
           <div class="quick-notice-board">
             <div class="card p-3">
               <div class="card-body">
                 <div class="d-flex justify-content-between">
-                  <p class="notice-month h6">January</p>
-                  <p class="notice-week h6">Week: 1st</p>
+                  <p class="notice-month h6">{{$monthName}}</p>
+                  <p class="notice-week h6">Week: {{$ordinals[$week]}}</p>
                 </div>
+                
+              @foreach ($notices as $index => $notice)
+                @php
+                    $dateTime = Carbon::parse($notice->created_at);
+
+                    $formattedTime = $dateTime->format('h:i A');
+
+                    $formattedDateTime = $dateTime->format('d-m-y');
+                @endphp
+                
                 <li>
                   <div class="notice-item-top d-flex justify-content-between align-items-end pb-2 ">
                     <div class="notice-title h5 m-0">
-                      1. Notice Title
+                    {{$index + 1}}. {{$notice->title}}
                     </div>
                     <div class="notice-datetime">
-                      <span class="notice-time">Time: 10:30 PM</span>
-                      <span class="notice-date d-block">Date: 05-01-24</span>
+                      <span class="notice-time">Time: {{$formattedTime}}</span>
+                      <span class="notice-date d-block">Date: {{ $formattedDateTime}}</span>
                     </div>
                   </div>
                   <div class="notice-item-bottom">
                     <p class="notice-body">
-                      <a href="{{route('notice')}}">Notice Of National Holiday Of people republic of Bangladesh. The Holiday Start on 26th
-                        March, 2024. </a>
+                      <a href="{{$notice->image}}" target="_blanck">{!!$notice->details!!}</a>
                     </p>
                   </div>
                 </li>
-                <li>
-                  <div class="notice-item-top d-flex justify-content-between align-items-end pb-2 ">
-                    <div class="notice-title h5 m-0">
-                      2. Notice Title
-                    </div>
-                    <div class="notice-datetime">
-                      <span class="notice-time">Time: 10:30 PM</span>
-                      <span class="notice-date d-block">Date: 05-01-24</span>
-                    </div>
-                  </div>
-                  <div class="notice-item-bottom">
-                    <p class="notice-body">
-                      <a href="./full-notice.php">Notice Of National Holiday Of people republic of Bangladesh. The Holiday Start on 26th
-                        March, 2024. </a>
-                    </p>
-                  </div>
-                </li>
+              @endforeach
               </div>
             </div>
           </div>

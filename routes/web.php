@@ -1,24 +1,27 @@
 <?php
 
-use App\Http\Controllers\frontend\AboutSchoolController;
-use App\Http\Controllers\frontend\AdmissionController;
-use App\Http\Controllers\frontend\AssesmentController;
-use App\Http\Controllers\frontend\Co_curriculamController;
-use App\Http\Controllers\frontend\CurriculamController;
-use App\Http\Controllers\frontend\FacultyController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BannerController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ShortInfoController;
 use App\Http\Controllers\frontend\FaqController;
-use App\Http\Controllers\frontend\GalleryController;
-use App\Http\Controllers\frontend\GalleryDetailsController;
 use App\Http\Controllers\frontend\HomeController;
-use App\Http\Controllers\frontend\IntroductionController;
 use App\Http\Controllers\frontend\JoinController;
-use App\Http\Controllers\frontend\LibraryController;
-use App\Http\Controllers\frontend\NoticeController;
 use App\Http\Controllers\frontend\RulesController;
 use App\Http\Controllers\frontend\StaffController;
+use App\Http\Controllers\frontend\NoticeController;
+use App\Http\Controllers\frontend\FacultyController;
+use App\Http\Controllers\frontend\GalleryController;
+use App\Http\Controllers\frontend\LibraryController;
+use App\Http\Controllers\NoticeControllerController;
+use App\Http\Controllers\frontend\AdmissionController;
+use App\Http\Controllers\frontend\AssesmentController;
+use App\Http\Controllers\frontend\CurriculamController;
+use App\Http\Controllers\frontend\AboutSchoolController;
+use App\Http\Controllers\frontend\IntroductionController;
 use App\Http\Controllers\frontend\TeacherStaffController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\frontend\Co_curriculamController;
+use App\Http\Controllers\frontend\GalleryDetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,6 +100,13 @@ Route::get('/gallery-details', [GalleryDetailsController::class, 'index'])->name
 
 
 
+// ====================================================================================
+//                     backend routes start
+// ====================================================================================
+
+
+
+
 
 Route::get('/dashboard', function () {
     return view('backoffice.dashboard');
@@ -110,4 +120,37 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+// home banner routes
+Route::get('/banner', [BannerController::class, 'index'])->name('banner');
+
+// Route::post('/home-banner', [BannerController::class, 'store'])->name('add.banner');
+
+Route::post('/update-banner', [BannerController::class, 'update'])->name('update.banner');
+
+// Route::get('/delete-banner/{id}', [BannerController::class, 'destroy'])->name('delete.banner');
+
+//short info routes
+Route::get('/short-info', [ShortInfoController::class, 'index'])->name('short.info');
+
+Route::post('/add-short-info', [ShortInfoController::class, 'store'])->name('add.shortInfo');
+
+Route::post('/edit-short-info', [ShortInfoController::class, 'update'])->name('edit.shortInfo');
+
+Route::get('/delete-short-info/{id}', [ShortInfoController::class, 'destroy'])->name('delete.shortInfo');
+
+
+
+//notice info routes
+Route::get('/home-notice', [NoticeControllerController::class, 'index'])->name('home.notice');
+
+Route::post('/store-notice', [NoticeControllerController::class, 'store'])->name('store.notice');
+
+// Route::post('/edit-short-info', [NoticeControllerController::class, 'update'])->name('edit.shortInfo');
+
+// Route::get('/delete-short-info/{id}', [NoticeControllerController::class, 'destroy'])->name('delete.shortInfo');
+
+
+// ====================================================================================
+//                     backend routes end
+// ====================================================================================
 

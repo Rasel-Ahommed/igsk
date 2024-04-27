@@ -2,11 +2,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                ©
+                © Copyright
                 <script>
                     document.write(new Date().getFullYear())
-                </script> Lexa <span class="d-none d-sm-inline-block"> - Crafted with <i
-                        class="mdi mdi-heart text-danger"></i> by Themesbrand.</span>
+                </script>  || ALL RIGHT RESERVED TO IGSK AND DEVELOP BY USSBD.
+
+
             </div>
         </div>
     </div>
@@ -76,15 +77,15 @@
                     data-bsStyle="assets/css/bootstrap-dark.min.css" data-appStyle="assets/css/app-dark.min.css" />
                 <label class="form-check-label" for="dark-mode-switch">Dark Mode</label>
             </div>
-
+{{-- 
             <div class="mb-2">
                 <img src="assets/images/layouts/layout-3.jpg" class="img-thumbnail" alt="">
-            </div>
-            <div class="form-check form-switch mb-5">
+            </div> --}}
+            {{-- <div class="form-check form-switch mb-5">
                 <input type="checkbox" class="form-check-input theme-choice" id="rtl-mode-switch"
                     data-appStyle="assets/css/app-rtl.min.css" />
                 <label class="form-check-label" for="rtl-mode-switch">RTL Mode</label>
-            </div>
+            </div> --}}
 
 
         </div>
@@ -113,6 +114,79 @@
 
 
 
+{{-- toster js  --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+@if (Session::has('success'))
+    <script>
+        toastr.options = {
+            'progressBar': true,
+            'closeButton': true,
+            "positionClass": "toast-top-right",
+            "marginTop": "10rem",
+        }
+        toastr.success("{{ Session::get('success') }}");
+        var toastrContainer = document.querySelector('.toast-top-right');
+        toastrContainer.style.marginTop = '4.5rem';
+    </script>
+@endif
+{{-- delete massage  --}}
+@if (Session::has('delete'))
+    <script>
+        toastr.options = {
+            'progressBar': true,
+            'closeButton': true,
+            "positionClass": "toast-top-right",
+            "marginTop": "10rem",
+        }
+        toastr.warning("{{ Session::get('delete') }}");
+        var toastrContainer = document.querySelector('.toast-top-right');
+        toastrContainer.style.marginTop = '4.5rem';
+    </script>
+@endif
+
+{{-- error massage  --}}
+@if (Session::has('error'))
+    <script>
+        toastr.options = {
+            'progressBar': true,
+            'closeButton': true,
+            "positionClass": "toast-top-right",
+            "marginTop": "10rem",
+        }
+        toastr.dengar("{{ Session::get('error') }}");
+        var toastrContainer = document.querySelector('.toast-top-right');
+        toastrContainer.style.marginTop = '4.5rem';
+    </script>
+@endif
+
+
+{{-- sweet alert massages --}}
+{{-- <script src="{{ asset('assets/js/pages/sweet-alerts.init.js')}}"></script>
+<script>
+    function confirmDelete() {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, end the day!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Submit the form
+                document.getElementById('dayEndForm').submit();
+            }
+        });
+    }
+</script> --}}
+
+
+{{-- custom js  --}}
+@stack('scripts')
 </body>
 
 </html>
