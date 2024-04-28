@@ -26,7 +26,15 @@
                             <li><a href="{{route('banner')}}"> Banner</a></li>
                             <li><a href="{{route('short.info')}}"> Short Info</a></li>
                             <li><a href="{{route('home.notice')}}"> Notice</a></li>
+                            <li><a href="{{route('home.news')}}"> News</a></li>
                         </ul>
+                    </li>
+
+                    <li>
+                        <a href="{{route('backoffice.gallery')}}" class="waves-effect">
+                            <i class="mdi mdi-camera-image"></i>
+                            <span>Gallery</span>
+                        </a>
                     </li>
 
                     {{-- <li>

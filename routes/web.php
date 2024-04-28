@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewesController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShortInfoController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\frontend\FacultyController;
 use App\Http\Controllers\frontend\GalleryController;
 use App\Http\Controllers\frontend\LibraryController;
 use App\Http\Controllers\NoticeControllerController;
+use App\Http\Controllers\BackofficeGalleryController;
 use App\Http\Controllers\frontend\AdmissionController;
 use App\Http\Controllers\frontend\AssesmentController;
 use App\Http\Controllers\frontend\CurriculamController;
@@ -145,9 +147,30 @@ Route::get('/home-notice', [NoticeControllerController::class, 'index'])->name('
 
 Route::post('/store-notice', [NoticeControllerController::class, 'store'])->name('store.notice');
 
-// Route::post('/edit-short-info', [NoticeControllerController::class, 'update'])->name('edit.shortInfo');
+Route::post('/update-notice', [NoticeControllerController::class, 'update'])->name('update.notice');
 
-// Route::get('/delete-short-info/{id}', [NoticeControllerController::class, 'destroy'])->name('delete.shortInfo');
+Route::get('/delete-notice/{id}', [NoticeControllerController::class, 'destroy'])->name('delete.notice');
+
+
+//news info routes
+Route::get('/home-news', [NewesController::class, 'index'])->name('home.news');
+
+Route::post('/store-news', [NewesController::class, 'store'])->name('store.news');
+
+Route::post('/update-news', [NewesController::class, 'update'])->name('update.news');
+
+Route::get('/delete-news/{id}', [NewesController::class, 'destroy'])->name('delete.news');
+
+
+// gallery routes 
+Route::get('/backoffice-gallery', [BackofficeGalleryController::class, 'index'])->name('backoffice.gallery');
+
+// Route::post('/store-news', [BackofficeGalleryController::class, 'store'])->name('store.news');
+
+// Route::post('/update-news', [BackofficeGalleryController::class, 'update'])->name('update.news');
+
+// Route::get('/delete-news/{id}', [BackofficeGalleryController::class, 'destroy'])->name('delete.news');
+
 
 
 // ====================================================================================

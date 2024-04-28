@@ -41,7 +41,6 @@ class ShortInfoController extends Controller
     }
 
     // update 
-
     public function update(Request $request){
         $request->validate([
             'image' => 'image|mimes:jpeg,png,jpg,webp,gif',

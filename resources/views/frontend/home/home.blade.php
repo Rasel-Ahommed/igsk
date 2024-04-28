@@ -373,15 +373,18 @@
       <div class="wrapper">
         <i class="ri-arrow-left-s-line" id="left"></i>
         <ul class="carousel">
+          
+          @foreach ($newes as $news)
           <li class="card">
-            <img class="card-img-top" src="./asset/image/work-img/carousel-1.jpg" alt="Title" loading="lazy"/>
+            <img class="card-img-top" src="{{$news->image}}" alt="Title" loading="lazy"/>
             <div class="card-body">
-              <p>10 March, 2024</p>
-              <h4 class="card-title">Carving memories…</h4>
-              <p class="card-text">together, as ever</p>
+              <p>{{carbon::parse($news->event_date)->format('d F, Y')}}</p>
+              <h4 class="card-title">{{$news->title}}</h4>
+              <p class="card-text">{{$news->sub_title}}</p>
             </div>
           </li>
-          <li class="card">
+          @endforeach
+          {{-- <li class="card">
             <img class="card-img-top" src="./asset/image/work-img/carousel-2.jpg" alt="Title" loading="lazy"/>
             <div class="card-body">
               <p>10 March, 2024</p>
@@ -420,7 +423,7 @@
               <h4 class="card-title">Carving memories…</h4>
               <p class="card-text">together, as ever</p>
             </div>
-          </li>
+          </li> --}}
         </ul>
         <i class="ri-arrow-right-s-line" id="right"></i>
       </div>

@@ -1,6 +1,6 @@
 @extends('backoffice.layout.app')
 
-@section('title', 'Notice')
+@section('title', 'Gallery')
 
 @section('content')
 
@@ -15,13 +15,13 @@
             <div class="container-fluid">
 
                 <div class="page-title-box text-center">
-                    <h4>Notice</h4>
+                    <h4>Gallery</h4>
 
                 </div>
 
                 <div class="page-title-box pb-2">
                     <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal"
-                        data-bs-target="#myModal">Add notice</button>
+                        data-bs-target="#myModal">Add Image</button>
                 </div>
 
                 <div class="row">
@@ -35,23 +35,19 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th data-priority="1">Notice title</th>
-                                                    <th data-priority="3">Notice details</th>
-                                                    <th data-priority="3">Notice pdf</th>
+                                                    <th data-priority="1">Gallery Title</th>
+                                                    <th data-priority="3">Gallery Images</th>
                                                     <th data-priority="1">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($notices as $notice)
-                                                    
+                                               
                                                     <tr>
-                                                        <th>{{$loop->index + 1}}</th>
-                                                        <td>{{$notice->title}}</td>
-                                                        <td>{{$notice->details}}</td>
-                                                        <td><a href="{{$notice->image}}" target="_blank"><button class="btn btn-primary waves-effect waves-light">View</button></a></td>
+                                                        <td></td>
+                                                        <td></td>
                                                         <td>
                                                             <div class="d-flex justify-content-center ">
-                                                                <a href="" data-log = '{{$notice}}'  id="bannerUpdate"
+                                                                <a href="" data-log = ''  id="bannerUpdate"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#editModal" class="edit_log"
                                                                     style="margin-right: 5px;">
@@ -60,16 +56,15 @@
                                                                         style="background: green;padding: 3px;color: white;font-size: 15px;cursor: pointer;border-radius: 3px; "></i>
                                                                 </a>
 
-                                                                <a id="delete-log" href="{{route('delete.notice',['id'=>$notice->id])}}"
+                                                                <a id="delete-log" href=""
                                                                     onclick="return confirm('Delete?')">
                                                                     <i class="mdi mdi-delete"
                                                                         style="background: red; padding: 3px; color: white; font-size: 15px; cursor: pointer; border-radius: 3px;"></i>
                                                                 </a>
-
                                                             </div>
                                                         </td> 
                                                     </tr>
-                                                @endforeach
+                                                
 
                                             </tbody>
                                         </table>
@@ -92,19 +87,19 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title mt-0" id="myModalLabel">Notice
+                                <h5 class="modal-title mt-0" id="myModalLabel">News
                                 </h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="{{route('store.notice')}}" method="POST" enctype="multipart/form-data">
+                                <form action="" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Notice pnf</label><span class="text-danger"> *</span>
+                                        <label for="exampleInputEmail1">News image</label><span class="text-danger"> *</span>
                                         <input type="file" class="form-control" id="banner_img"
-                                            aria-describedby="emailHelp" name="image" placeholder="Banner image" accept="application/pdf">
+                                            aria-describedby="emailHelp" name="image" placeholder="Banner image" accept="image/*">
                                     </div>
                                     @error('image')
                                         <div class="text-danger">{{ $message }}</div>
@@ -112,19 +107,29 @@
 
 
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Notice title</label><span class="text-danger"> *</span>
-                                        <input type="text" class="form-control" id="code-line" name="title"
-                                            placeholder="Notice title">
+                                        <label for="exampleInputPassword1">News title</label><span class="text-danger"> *</span>
+                                        <input type="text" class="form-control" id="" name="title"
+                                            placeholder="News title">
                                     </div>
                                     @error('title')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
 
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Notice details</label><span class="text-danger"> *</span>
-                                       <textarea name="info_details" id="info_details" cols="30" rows="10"></textarea>
+                                        <label for="exampleInputPassword1">News sub-title</label><span class="text-danger"> *</span>
+                                        <input type="text" class="form-control" id="" name="sub_title"
+                                            placeholder="News sub-title">
                                     </div>
                                     @error('sub_title')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">News Date</label><span class="text-danger"> *</span>
+                                        <input type="date" class="form-control" id="" name="date"
+                                            placeholder="News sub-title">
+                                    </div>
+                                    @error('date')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
 
@@ -157,13 +162,13 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="{{route('update.notice')}}" method="POST" enctype="multipart/form-data">
+                                <form action="" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <input type="hidden" name="id" id="id">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Info image</label><span class="text-danger"> *</span>
                                         <input type="file" class="form-control" id="image"
-                                            aria-describedby="emailHelp" name="image" placeholder="Banner image" accept="application/pdf">
+                                            aria-describedby="emailHelp" name="image" placeholder=" image" accept="image/*">
                                     </div>
                                     @error('image')
                                         <div class="text-danger">{{ $message }}</div>
@@ -171,22 +176,31 @@
 
 
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Notice title</label><span class="text-danger"> *</span>
-                                        <input type="text" class="form-control" id="noticeTitle" name="title"
-                                            placeholder="Info title">
+                                        <label for="exampleInputPassword1">Info title</label><span class="text-danger"> *</span>
+                                        <input type="text" class="form-control" id="title" name="title"
+                                            placeholder="News title">
                                     </div>
                                     @error('title')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
 
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Info details</label><span class="text-danger"> *</span>
-                                        <textarea name="edit_info_details" id="details" cols="30" rows="10"></textarea>
+                                        <label for="exampleInputPassword1">Info sub title</label><span class="text-danger"> *</span>
+                                        <input type="text" class="form-control" id="sub_title" name="sub_title"
+                                            placeholder="News sub title">
                                     </div>
-                                    @error('edit_info_details')
+                                    @error('sub_title')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
 
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">News Date</label><span class="text-danger"> *</span>
+                                        <input type="date" class="form-control" id="date" name="date"
+                                            placeholder="News sub-title">
+                                    </div>
+                                    @error('date')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
 
                             </div>
                             <div class="modal-footer">
@@ -211,23 +225,24 @@
             $('.edit_log').on('click', function(e){
                 var data = $(this).data('log');
 
-                $('#noticeTitle').val('');
-                $('#details').val('');
+                $('#title').val('');
+                $('#sub_title').val('');
                 // CKEDITOR.instances['details'].setData('');
 
                 $('#id').val(data.id);
-                $('#noticeTitle').val(data.title);
-                CKEDITOR.instances['details'].setData(data.details);
+                $('#title').val(data.title);
+                $('#sub_title').val(data.sub_title);
+                $('#date').val(data.event_date);
 
             });
         });
     </script>
 
-
+{{-- 
 <script>
     CKEDITOR.replace('info_details');
     CKEDITOR.replace('edit_info_details');
-</script>
+</script> --}}
 @endpush
 
 @endsection
