@@ -19,10 +19,10 @@
 
                 </div>
 
-                <div class="page-title-box pb-2">
-                    {{-- <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal"
-                        data-bs-target="#myModal">Add banner</button> --}}
-                </div>
+                {{-- <div class="page-title-box pb-2">
+                    <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal"
+                        data-bs-target="#myModal">Add banner</button>
+                </div> --}}
 
                 <div class="row">
                     <div class="col-12">

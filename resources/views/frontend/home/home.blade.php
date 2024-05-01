@@ -29,13 +29,13 @@
           <div class="carousel-caption">
             <h1 class="pb-md-3">{{$data->code_line}}</h1>
             <div class="d-flex justify-content-center gap-2">
-              <a href="">
+              <a href="{{route('about.school')}}">
                 <button class="btn-learn btn btn-md">
                   Learn more
                 </button>
               </a>
               
-              <a href="">
+              <a href="#quickInfo">
                 <button class="btn-more btn btn-md">
                   Read more
                 </button>
@@ -62,7 +62,7 @@
   
   <!-- quick Info Start -->
   
-  <section class="quick-info-section">
+  <section class="quick-info-section" id="quickInfo"> 
     <div class="all-info-list container">
       <div class="row">
         <div class="col-lg-3">
@@ -185,7 +185,7 @@
                 @endphp
                 
                 <li>
-                  <div class="notice-item-top d-flex justify-content-between align-items-end pb-2 ">
+                  <div class="notice-item-top d-flex flex-column-reverse justify-content-between align-items-end pb-2 ">
                     <div class="notice-title h5 m-0">
                     {{$index + 1}}. {{$notice->title}}
                     </div>
@@ -196,7 +196,7 @@
                   </div>
                   <div class="notice-item-bottom">
                     <p class="notice-body">
-                      <a href="{{$notice->image}}" target="_blanck">{!!$notice->details!!}</a>
+                      <a style="color:black;text-decoration: none" href="{{$notice->image}}" target="_blanck">{!!$notice->details!!}</a>
                     </p>
                   </div>
                 </li>
@@ -224,63 +224,34 @@
         <div class="row">
           <div class="col-lg-8">
             <div class="row">
+              @php
+              $class_name = [
+              'quick-event-blue',
+              'quick-event-purple',
+              'quick-event-green',
+              'quick-event-pink',
+              ];
+              @endphp
+              @foreach($events as $index=> $event)
               <div class="col-md-6">
-                <div class="card quick-event-blue">
+                <div class="card {{$class_name[$index]}}">
                   <div class="card-body">
-                    <p class="h2">16</p>
-                    <p class="h6">January</p>
+                    <p class="h2">{{Carbon::parse($event->start_date)->format('d')}}</p>
+                    <p class="h6">{{Carbon::parse($event->start_date)->format('F')}}</p>
                     <p class="h4">
-                      IGSK Annual Function
+                      {{$event->title}}
+                    </p>
                     </p>
                     <p class="quick-event-time">
-                      10:30 AM
+                      {{Carbon::parse($event->created_at)->format('h:i A')}}
+                    </p>
                     </p>
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="card quick-event-purple">
-                  <div class="card-body">
-                    <p class="h2">16</p>
-                    <p class="h6">January</p>
-                    <p class="h4">
-                      IGSK Annual Function
-                    </p>
-                    <p class="quick-event-time">
-                      10:30 AM
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="card quick-event-green">
-                  <div class="card-body">
-                    <p class="h2">16</p>
-                    <p class="h6">January</p>
-                    <p class="h4">
-                      IGSK Annual Function
-                    </p>
-                    <p class="quick-event-time">
-                      10:30 AM
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="card quick-event-pink">
-                  <div class="card-body">
-                    <p class="h2">16</p>
-                    <p class="h6">January</p>
-                    <p class="h4">
-                      IGSK Annual Function
-                    </p>
-                    <p class="quick-event-time">
-                      10:30 AM
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+              @endforeach
+  
+        </div>
           </div>
           <div class="col-lg-4">
             <div class="calendar">
@@ -305,6 +276,11 @@
   
                 </tbody>
               </table>
+              <div class="color-defination">
+                <ul id="color_def">
+                  
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -442,66 +418,29 @@
         </h2>
       </div>
       <div class="row">
-        <div class="col-lg-4 col-md-6 p-0">
-          <div class="gallery-img-content">
-            <div class="gallery-img">
-              <img class="gallery-item" src="./asset/image/work-img/carousel-1.jpg" alt="Written Compotision" loading="lazy">
-              <a href="{{route('gallery.details')}}" class="btn gallery-overlay">
-                <i class="ri-play-circle-line"></i>
-              </a>
-            </div>
+        @php
+        use App\Models\Gallery;
+
+    @endphp
+   
+    @foreach($gallery_titles as $title)
+    @php
+        $image = Gallery::where('gallery_title',$title->id)->first()
+    @endphp
+    @if($image)
+      <div class="col-lg-4 col-md-6 p-0">
+        <div class="gallery-img-content">
+          <div class="gallery-img">
+            <img class="gallery-item" src="{{$image->image}}" alt="Written Compotision" loading="lazy">
+            <a href="{{route('gallery.details',['id'=>$title->id])}}" class="btn gallery-overlay">
+              <i class="ri-play-circle-line"></i>
+            </a>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 p-0">
-          <div class="gallery-img-content">
-            <div class="gallery-img">
-              <img class="gallery-item" src="./asset/image/work-img/carousel-3.jpg" alt="Playground" loading="lazy">
-              <a href="./events.php" class="btn gallery-overlay">
-                <i class="ri-play-circle-line"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 p-0">
-          <div class="gallery-img-content">
-            <div class="gallery-img">
-              <img class="gallery-item" src="./asset/image/work-img/carousel-2.jpg" alt="Story Classroom" loading="lazy">
-              <a href="./events.php" class="btn gallery-overlay">
-                <i class="ri-play-circle-line"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 p-0">
-          <div class="gallery-img-content">
-            <div class="gallery-img">
-              <img class="gallery-item" src="./asset/image/work-img/carousel-1.jpg" alt="Written Compotision" loading="lazy">
-              <a href="./events.php" class="btn gallery-overlay">
-                <i class="ri-play-circle-line"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 p-0">
-          <div class="gallery-img-content">
-            <div class="gallery-img">
-              <img class="gallery-item" src="./asset/image/work-img/carousel-3.jpg" alt="Playground" loading="lazy">
-              <a href="./events.php" class="btn gallery-overlay">
-                <i class="ri-play-circle-line"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 p-0">
-          <div class="gallery-img-content">
-            <div class="gallery-img">
-              <img class="gallery-item" src="./asset/image/work-img/carousel-2.jpg" alt="Story Classroom" loading="lazy">
-              <a href="./events.php" class="btn gallery-overlay">
-                <i class="ri-play-circle-line"></i>
-              </a>
-            </div>
-          </div>
-        </div>
+      </div>
+      @endif
+    @endforeach
+ 
       </div>
       <div class="text-end">
         <a class="full-gallery-btn btn" href="{{route('gallery')}}">
@@ -518,79 +457,39 @@
   <section class="parents-review">
     <div class="container py-md-5 py-2">
       <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
-        <ol class="carousel-indicators">
+        {{-- <ol class="carousel-indicators">
           <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active" aria-current="true"
             aria-label="First slide"></li>
           <li data-bs-target="#carouselId" data-bs-slide-to="1" aria-label="Second slide"></li>
           <li data-bs-target="#carouselId" data-bs-slide-to="2" aria-label="Third slide"></li>
-        </ol>
+        </ol> --}}
         <div class="carousel-inner" role="listbox">
-          <div class="carousel-item active">
+
+          
+          
+        @foreach ($testimonials as $index => $testimonial)
+          <div class="carousel-item {{ $index === 0 ? ' active' : '' }}">
             <div class="row align-items-end">
               <div class="col-md-5 position-relative">
                 <div class="p-4 review-circle-box review-box-green"></div>
                 <div class="p-5 review-circle-box review-box-blue"></div>
                 <div class="parents-name-box my-3">
                   <p class="m-0">Said about us</p>
-                  <h4>Taan's Mother</h4>
+                  <h4>{{$testimonial->name}}</h4>
                 </div>
               </div>
               <div class="col-md-7 text-end">
                 <p>
-                  <q>
-                    I got a warm environment in IGSK and found the guidance that fulfilled my wish list...Compassion is
-                    integrated into their teaching standards, the importance of values is emphasized...Helps students to
-                    have the insight already in elementary school that I have earned in my high school stage...
+                  <q> 
+                    {!!$testimonial->massage!!}
                   </q>
                 </p>
-                <h4>Taan’s Mother</h4>
+                <h4>{{$testimonial->name}}</h4>
               </div>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="row align-items-end">
-              <div class="col-md-5 position-relative ">
-                <div class="p-4 review-circle-box review-box-green"></div>
-                <div class="p-5 review-circle-box review-box-blue"></div>
-                <div class="parents-name-box my-3">
-                  <p class="m-0">Said about us</p>
-                  <h4>Taan's Mother</h4>
-                </div>
-              </div>
-              <div class="col-md-7 text-end">
-                <p>
-                  <q>
-                    I got a warm environment in IGSK and found the guidance that fulfilled my wish list...Compassion is
-                    integrated into their teaching standards, the importance of values is emphasized...Helps students to
-                    have the insight already in elementary school that I have earned in my high school stage...
-                  </q>
-                </p>
-                <h4>Taan’s Mother</h4>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="row align-items-end">
-              <div class="col-md-5 position-relative ">
-                <div class="p-4 review-circle-box review-box-green"></div>
-                <div class="p-5 review-circle-box review-box-blue"></div>
-                <div class="parents-name-box my-3">
-                  <p class="m-0">Said about us</p>
-                  <h4>Taan's Mother</h4>
-                </div>
-              </div>
-              <div class="col-md-7 text-end">
-                <p>
-                  <q>
-                    I got a warm environment in IGSK and found the guidance that fulfilled my wish list.Compassion is
-                    integrated into their teaching standards, the importance of values is emphasized.Helps students to
-                    have the insight already in elementary school that I have earned in my high school stage...
-                  </q>
-                </p>
-                <h4>Taan’s Mother</h4>
-              </div>
-            </div>
-          </div>
+        @endforeach
+
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>

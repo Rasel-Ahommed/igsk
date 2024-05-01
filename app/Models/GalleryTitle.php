@@ -13,4 +13,10 @@ class GalleryTitle extends Model
     protected $fillable = [
         'title'
     ];
+
+
+    public function galleries()
+    {
+        return $this->hasMany(Gallery::class, 'gallery_title');
+    }
 }

@@ -21,50 +21,80 @@
                             Join Us
                         </h2>
                     </div>
-                    <form action="#" class="row">
+                    @if (session('success'))
+                        <div class="alert alert-success text-center">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    <form action="{{route('store.joinForm')}}" method="POST" enctype="multipart/form-data" class="row">
+                       @csrf
                         <div class="col-sm-12">
                             <div class="mb-3">
-                                <input type="file" class="form-control">
+                                <input name='image' type="file" class="form-control" accept="image/*">
                             </div>
+                            @error('image')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="First Name">
+                                <input name='fast_name' type="text" class="form-control" placeholder="First Name" value="{{old('fast_name')}}">
                             </div>
+                            @error('fast_name')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="Last Name">
+                                <input name='last_name' type="text" class="form-control" placeholder="Last Name" value="{{old('last_name')}}">
                             </div>
+                            @error('last_name')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <input type="email" class="form-control" placeholder="Email">
+                                <input name='email' type="email" class="form-control" placeholder="Email" value="{{old('email')}}">
                             </div>
+                            @error('email')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="Education">
+                                <input name='education' type="text" class="form-control" placeholder="Education" value="{{old('education')}}">
                             </div>
+                            @error('education')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-sm-12">
                             <div class="mb-3">
-                                <textarea name="" id="" class="form-control" placeholder="Carriar Objective"></textarea>
+                                <textarea name="carriar_objective" id="" class="form-control" placeholder="Carriar Objective">{{old('carriar_objective')}}</textarea>
                             </div>
+                            @error('carriar_objective')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-sm-12">
                             <div class="mb-3">
-                                <textarea name="" id="" class="form-control" placeholder="Massage"></textarea>
+                                <textarea name="massage" id="" class="form-control" placeholder="Massage">{{old('massage')}}</textarea>
                             </div>
+                            @error('massage')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-sm-12">
                             <div class="mb-3">
-                                <input class="form-control" type="file" name="" id="" placeholder="Upload your  cv">
+                                <input name='pdf' class="form-control" type="file" name="" id="" placeholder="Upload your  cv" accept="application/pdf" value="{{old('pdf')}}">
                             </div>
+                            @error('pdf')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-sm-12">
                             <div class="mb-3">
-                                <input class="form-control bg-primary text-white fw-semibold" type="submit" name="" id="" value="Send Massage">
+                                <input type="submit"  class="form-control bg-primary text-white fw-semibold" type="submit" name="" id="" value="Send Massage">
                             </div>
                         </div>
                     </form>

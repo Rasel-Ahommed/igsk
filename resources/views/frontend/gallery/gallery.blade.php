@@ -12,67 +12,31 @@
           Gallery
         </h2>
       </div>
+    
       <div class="row">
-        <div class="col-lg-4 col-md-6 p-0">
-          <div class="gallery-img-content">
-            <div class="gallery-img">
-              <img class="gallery-item" src="./asset/image/work-img/carousel-1.jpg" alt="Written Compotision" loading="lazy">
-              <a href="./events.php" class="btn gallery-overlay">
-                <i class="ri-play-circle-line"></i>
-              </a>
+        @php
+            use App\Models\Gallery;
+
+        @endphp
+       
+        @foreach($gallery_titles as $title)
+        @php
+            $image = Gallery::where('gallery_title',$title->id)->first()
+        @endphp
+        @if($image)
+          <div class="col-lg-4 col-md-6 p-0">
+            <div class="gallery-img-content">
+              <div class="gallery-img">
+                <img class="gallery-item" src="{{$image->image}}" alt="Written Compotision" loading="lazy">
+                <a href="{{route('gallery.details',['id'=>$title->id])}}" class="btn gallery-overlay">
+                  <i class="ri-play-circle-line"></i>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-4 col-md-6 p-0">
-          <div class="gallery-img-content">
-            <div class="gallery-img">
-              <img class="gallery-item" src="./asset/image/work-img/carousel-3.jpg" alt="Playground" loading="lazy">
-              <a href="./events.php" class="btn gallery-overlay">
-                <i class="ri-play-circle-line"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 p-0">
-          <div class="gallery-img-content">
-            <div class="gallery-img">
-              <img class="gallery-item" src="./asset/image/work-img/carousel-2.jpg" alt="Story Classroom" loading="lazy">
-              <a href="./events.php" class="btn gallery-overlay">
-                <i class="ri-play-circle-line"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 p-0">
-          <div class="gallery-img-content">
-            <div class="gallery-img">
-              <img class="gallery-item" src="./asset/image/work-img/carousel-1.jpg" alt="Written Compotision" loading="lazy">
-              <a href="./events.php" class="btn gallery-overlay">
-                <i class="ri-play-circle-line"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 p-0">
-          <div class="gallery-img-content">
-            <div class="gallery-img">
-              <img class="gallery-item" src="./asset/image/work-img/carousel-3.jpg" alt="Playground" loading="lazy">
-              <a href="./events.php" class="btn gallery-overlay">
-                <i class="ri-play-circle-line"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 p-0">
-          <div class="gallery-img-content">
-            <div class="gallery-img">
-              <img class="gallery-item" src="./asset/image/work-img/carousel-2.jpg" alt="Story Classroom" loading="lazy">
-              <a href="./events.php" class="btn gallery-overlay">
-                <i class="ri-play-circle-line"></i>
-              </a>
-            </div>
-          </div>
-        </div>
+          @endif
+        @endforeach
+
       </div>
     </div>
   </section>

@@ -1257,3 +1257,11 @@ footer a:hover::before {
         padding: 3rem;
     }
 }
+
+.event-highlight{
+    background-color: #29a71a;
+   }
+
+.eve-color-info {
+    padding: 10px;
+}

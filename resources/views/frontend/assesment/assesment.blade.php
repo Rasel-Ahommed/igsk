@@ -20,9 +20,10 @@
 <section class="assesment-section py-sm-5 py-4">
     <div class="container">
         <h4 class="text-decoration-underline">
-            Assessment Process at International Grammar School:
+            {{$data->title}}
         </h4>
-        <p class="text-justify">
+        {!!$data->details!!}
+        {{-- <p class="text-justify">
             At International Grammar School, our commitment to academic excellence is reflected in our thoughtful and
             comprehensive assessment process. We believe in assessing student progress in a fair, transparent, and
             constructive manner. Our assessment process encompasses various methods to provide a holistic understanding
@@ -127,7 +128,7 @@
                     their educational journey.
                 </p>
             </div>
-        </div>
+        </div> --}}
     </div>
 </section>
 

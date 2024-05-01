@@ -39,505 +39,98 @@
         </div>
         <div class="member-list p-sm-5 p-3" id="early_year">
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
+                @foreach ($early_years as $early_year)
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="faculty-member">
+                            <div class="member-img">
+                                <img src="{{$early_year->image}}" alt="Faculty Member" loading="lazy">
+                            </div>
+                            <div class="member-text">
+                                <h5 class="fw-bold">{{$early_year->first_name}} {{ $early_year->last_name}}</h5>
+                                <h6>{{$early_year->position}}</h6>
+                                <h6>{{$early_year->education}}</h6>
+                            </div>
+                            <a href="javascript: void(0)" data-log ='{{$early_year}}' class="member-box showthis" >
+                                <i class="ri-arrow-right-line"></i>
+                            </a>
                         </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
+
+
         <div class="member-list p-sm-5 p-3" id="elementory_year">
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
+                @foreach ($elementary_schools as $elementary_school)
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="faculty-member">
+                            <div class="member-img">
+                                <img src="{{$elementary_school->image}}" alt="Faculty Member" loading="lazy">
+                            </div>
+                            <div class="member-text">
+                                <h5 class="fw-bold">{{$elementary_school->first_name}} {{ $elementary_school->last_name}}</h5>
+                                <h6>{{$elementary_school->position}}</h6>
+                                <h6>{{$elementary_school->education}}</h6>
+                            </div>
+                            <a href="javascript: void(0)" data-log ='{{$elementary_school}}' class="member-box showthis" >
+                                <i class="ri-arrow-right-line"></i>
+                            </a>
                         </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
+
+
         <div class="member-list p-sm-5 p-3" id="mid_year">
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
+                @foreach ($mid_schools as $mid_school)
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="faculty-member">
+                            <div class="member-img">
+                                <img src="{{$mid_school->image}}" alt="Faculty Member" loading="lazy">
+                            </div>
+                            <div class="member-text">
+                                <h5 class="fw-bold">{{$mid_school->first_name}} {{ $mid_school->last_name}}</h5>
+                                <h6>{{$mid_school->position}}</h6>
+                                <h6>{{$mid_school->education}}</h6>
+                            </div>
+                            <a href="javascript: void(0)" data-log ='{{$mid_school}}' class="member-box showthis" >
+                                <i class="ri-arrow-right-line"></i>
+                            </a>
                         </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
+
+
         <div class="member-list p-sm-5 p-3" id="high_year">
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
+                @foreach ($high_schools as $high_school)
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="faculty-member">
+                            <div class="member-img">
+                                <img src="{{$high_school->image}}" alt="Faculty Member" loading="lazy">
+                            </div>
+                            <div class="member-text">
+                                <h5 class="fw-bold">{{$high_school->first_name}} {{ $high_school->last_name}}</h5>
+                                <h6>{{$high_school->position}}</h6>
+                                <h6>{{$high_school->education}}</h6>
+                            </div>
+                            <a href="javascript: void(0)" data-log ='{{$high_school}}' class="member-box showthis" >
+                                <i class="ri-arrow-right-line"></i>
+                            </a>
                         </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="faculty-member">
-                        <div class="member-img">
-                            <img src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
-                        </div>
-                        <div class="member-text">
-                            <h5 class="fw-bold">Rudaba Raihan</h5>
-                            <h6>Director, IGSK</h6>
-                            <h6>Bachelor's degree in English</h6>
-                        </div>
-                        <a href="#" class="member-box">
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
 </section>
 
 <!-- faculty member end -->
-
 <!-- modal for image lightbox start -->
 
 <div class="modal fade" id="teacherLightboxModal" tabindex="1" role="dialog" aria-labelledby="lightboxModalLabel"
@@ -547,7 +140,7 @@
             <div class="modal-header fw-bolder">
                 <div class="modal-title">
                     <div class="teacher-name">
-                        Personal Information About Mr. Jhon Doe
+                        Personal Information <span id="info">About Mr. Jhon Doe</span>
                     </div>
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -555,20 +148,42 @@
             <div class="modal-body">
                 <div class="teacher-info-single">
                     <div class="teacher-img">
-                        <img class="img-fluid" src="./asset/image/myImg/teacher.jpg" alt="Faculty Member" loading="lazy">
+                        <img class="img-fluid" id="image" src="" alt="Faculty Member" loading="lazy">
                     </div>
                     <div class="teacher-text">
-                        <h5 class="fw-bold">Name: Rudaba Raihan</h5>
-                        <h6><strong>Post:</strong> Director, IGSK</h6>
-                        <h6><strong>Education:</strong> Bachelor's degree in English</h6>
-                        <h6><strong>Experience:</strong> 11<sup>Year</sup></h6>
+                        <h5 class="fw-bold">Name: <span id="name"></span></h5>
+                        <h6><strong>Post:</strong> <span id="post">Director, IGSK</span></h6>
+                        <h6><strong>Education:</strong> <span id="education">Bachelor's degree in English</span></h6>
+                        <h6><strong>Experience:</strong> <span id="exper"></span></h6>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <!-- modal for image lightbox end -->
 
+
+<script>
+    $(document).ready(function() {
+        $('.showthis').on('click', function(e) {
+            var data = $(this).data('log');
+           console.log(data);
+            $('#info').html('');
+            $('#image').attr('src', '');
+            $('#name').html('');
+            $('#post').html('');
+            $('#education').html('');
+            $('#exper').html('');
+            
+            $('#info').html(data.first_name + ' ' + data.last_name);
+            $('#image').attr('src', data.image);
+            $('#name').html(data.first_name + ' ' + data.last_name);
+            $('#post').html(data.position);
+            $('#education').html(data.education);
+            $('#exper').html(data.experience);
+
+        });
+    });
+</script>
 @endsection

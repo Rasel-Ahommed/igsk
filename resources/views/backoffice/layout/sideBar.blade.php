@@ -27,6 +27,19 @@
                             <li><a href="{{route('short.info')}}"> Short Info</a></li>
                             <li><a href="{{route('home.notice')}}"> Notice</a></li>
                             <li><a href="{{route('home.news')}}"> News</a></li>
+                            <li><a href="{{route('event')}}"> Event Calendar</a></li>
+                            <li><a href="{{route('testimonial')}}">Testimonial</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="mdi mdi-view-dashboard"></i>
+                            <span>Academics</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="{{route('backoffice.curriculum')}}">Curriculum</a></li>
+                            <li><a href="{{route('backoffice.assesment')}}">Assesment Process</a></li>
                         </ul>
                     </li>
 
@@ -34,6 +47,47 @@
                         <a href="{{route('backoffice.gallery')}}" class="waves-effect">
                             <i class="mdi mdi-camera-image"></i>
                             <span>Gallery</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('backoffice.employee')}}" class="waves-effect">
+                            <i class="mdi mdi-view-dashboard"></i>
+                            <span>Employee</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('backoffice.enquiryForm')}}" class="waves-effect">
+                            <i class="mdi mdi-view-dashboard"></i>
+                            <span>Enquiry Form</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('backoffice.joinUsForm')}}" class="waves-effect">
+                            <i class="mdi mdi-view-dashboard"></i>
+                            <span>Join us</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('backoffice.faq')}}" class="waves-effect">
+                            <i class="mdi mdi-view-dashboard"></i>
+                            <span>FAQs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="mdi mdi-view-dashboard"></i>
+                            <span>Users</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="{{route('register')}}">Create user</a></li>
+                            <li><a href="{{route('backoffice.viewUser')}}">All users</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="{{route('backoffice.sitesetting')}}" class="waves-effect">
+                            <i class="mdi mdi-view-dashboard"></i>
+                            <span>Site Settings</span>
                         </a>
                     </li>
 

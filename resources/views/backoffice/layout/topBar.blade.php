@@ -1,3 +1,9 @@
+@php
+    use App\Models\SiteSetting;
+    $siteData = SiteSetting::first();
+@endphp
+
+
 <body data-sidebar="dark">
 
     <!-- <body data-layout="horizontal" data-topbar="colored"> -->
@@ -38,7 +44,7 @@
                             <img style="width: 8rem;
                             height: auto;
                             background: white;
-                            border-radius: 2px;" src="{{asset('frontendData/asset/image/logo/logo.webp')}}" alt="" height="18">
+                            border-radius: 2px;" src="{{$siteData->image}}" alt="" height="18">
                         </span>
                     </a>
                 </div>
@@ -270,12 +276,12 @@
                 <div class="dropdown d-inline-block">
                     <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="rounded-circle header-profile-user" src="assets/images/users/user-4.jpg"
+                        <img class="rounded-circle header-profile-user" src="{{asset('assets/images/avatar.png')}}"
                             alt="Header Avatar">
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <a class="dropdown-item" href="#"><i
+                        <a class="dropdown-item" href="{{route('profile.edit')}}"><i
                                 class="mdi mdi-account-circle font-size-17 text-muted align-middle me-1"></i>
                             Profile</a>
                         {{-- <a class="dropdown-item" href="#"><i

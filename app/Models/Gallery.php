@@ -14,4 +14,9 @@ class Gallery extends Model
         'gallery_title',
         'image',
     ];
+
+    public function galleryTitle()
+    {
+        return $this->belongsTo(GalleryTitle::class, 'gallery_title');
+    }
 }

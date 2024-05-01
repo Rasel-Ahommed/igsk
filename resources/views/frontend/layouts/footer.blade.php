@@ -1,3 +1,8 @@
+@php
+    use App\Models\SiteSetting;
+    $siteData = SiteSetting::first();
+@endphp
+
 <footer>
     <div class="container px-md-5 px-2 pt-md-5 pt-2 pb-4">
         <div class="row">
@@ -56,16 +61,16 @@
         </div>
         <div class="col-sm-6">
             <div class="footer-social-link d-flex justify-content-end gap-2">
-                <a href="#" class="footer-social-box">
+                <a href="{{$siteData->facebook}}" class="footer-social-box">
                     <i class="ri-youtube-fill"></i>
                 </a>
-                <a href="#" class="footer-social-box">
+                <a href="{{$siteData->twitter}}" class="footer-social-box">
                     <i class="ri-facebook-fill"></i>
                 </a>
-                <a href="#" class="footer-social-box">
+                <a href="{{$siteData->whatsapp}}" class="footer-social-box">
                     <i class="ri-twitter-fill"></i>
                 </a>
-                <a href="#" class="footer-social-box">
+                <a href="{{$siteData->youtube}}" class="footer-social-box">
                     <i class="ri-whatsapp-fill"></i>
                 </a>
             </div>

@@ -1,3 +1,9 @@
+@php
+    use App\Models\SiteSetting;
+    $siteData = SiteSetting::first();
+@endphp
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +11,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IGSK - International Grammer School Khulna</title>
-    <link rel="shortcut icon" href="{{asset('frontendData/asset/image/logo/logo.webp')}}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{$siteData->image}}" type="image/x-icon" />
     <link rel="stylesheet" href="{{asset('frontendData/asset/css/bootstrap.min.css')}}" />
     <link rel="stylesheet" href="{{asset('frontendData/asset/css/style.css')}}" />
     <!-- icons -->
@@ -29,7 +35,7 @@
                 <div class="nav-end-content" id="sidebarContent">
                     <div class="nav-menubar">
                         <ul class="m-auto">
-                            <a href="./">
+                            <a href="{{route('home')}}">
                                 <li>Home</li>
                             </a>
                             <!-- <li>About Us <i class="ri-arrow-down-s-line"></i></li> -->
@@ -119,6 +125,7 @@
                                 </li>
                             </div>
                             <!-- <li>Academics <i class="ri-arrow-down-s-line"></i></li> -->
+ 
                             <li>
                                 <div class="dropdown open">
                                     <a class="dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown"
@@ -134,10 +141,10 @@
                                                         <div class="subchild-dropdown-main position-relative">
                                                             <i class="ri-arrow-left-s-line"></i> Playgroup
                                                             <ul class="subchild-dropdown-items py-2">
-                                                                <a href="{{route('curriculam')}}" class="dropdown-item">
+                                                                <a href="{{route('curriculam',['id'=>1])}}" class="dropdown-item">
                                                                     <li>Curriculam</li>
                                                                 </a>
-                                                                <a href="{{route('assesment')}}" class="dropdown-item">
+                                                                <a href="{{route('assesment',['id'=>1])}}" class="dropdown-item">
                                                                     <li>Assessment Process</li>
                                                                 </a>
                                                                 <a href="{{route('teacher.staff')}}" class="dropdown-item">
@@ -150,10 +157,10 @@
                                                         <div class="subchild-dropdown-main position-relative">
                                                             <i class="ri-arrow-left-s-line"></i> Kinder 1
                                                             <ul class="subchild-dropdown-items py-2">
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{route('curriculam',['id'=>2])}}" class="dropdown-item">
                                                                     <li>Corriculam</li>
                                                                 </a>
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{route('assesment',['id'=>2])}}" class="dropdown-item">
                                                                     <li>Assessment Process</li>
                                                                 </a>
                                                                 <a href="#" class="dropdown-item">
@@ -166,10 +173,10 @@
                                                         <div class="subchild-dropdown-main position-relative">
                                                             <i class="ri-arrow-left-s-line"></i> Kinder 2
                                                             <ul class="subchild-dropdown-items py-2">
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{route('curriculam',['id'=>3])}}" class="dropdown-item">
                                                                     <li>Corriculam</li>
                                                                 </a>
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{route('assesment',['id'=>3])}}" class="dropdown-item">
                                                                     <li>Assessment Process</li>
                                                                 </a>
                                                                 <a href="#" class="dropdown-item">
@@ -189,10 +196,10 @@
                                                         <div class="subchild-dropdown-main position-relative">
                                                             <i class="ri-arrow-left-s-line"></i> Grade I
                                                             <ul class="subchild-dropdown-items py-2">
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{route('curriculam',['id'=>4])}}" class="dropdown-item">
                                                                     <li>Corriculam</li>
                                                                 </a>
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{route('assesment',['id'=>4])}}" class="dropdown-item">
                                                                     <li>Assessment Process</li>
                                                                 </a>
                                                                 <a href="#" class="dropdown-item">
@@ -205,10 +212,10 @@
                                                         <div class="subchild-dropdown-main position-relative">
                                                             <i class="ri-arrow-left-s-line"></i> Grade II
                                                             <ul class="subchild-dropdown-items py-2">
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{route('curriculam',['id'=>5])}}" class="dropdown-item">
                                                                     <li>Corriculam</li>
                                                                 </a>
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{route('assesment',['id'=>5])}}" class="dropdown-item">
                                                                     <li>Assessment Process</li>
                                                                 </a>
                                                                 <a href="#" class="dropdown-item">
@@ -221,10 +228,10 @@
                                                         <div class="subchild-dropdown-main position-relative">
                                                             <i class="ri-arrow-left-s-line"></i> Grade III
                                                             <ul class="subchild-dropdown-items py-2">
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{ route('curriculam', ['id' => 6]) }}" class="dropdown-item">
                                                                     <li>Corriculam</li>
                                                                 </a>
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{route('assesment',['id'=>6])}}" class="dropdown-item">
                                                                     <li>Assessment Process</li>
                                                                 </a>
                                                                 <a href="#" class="dropdown-item">
@@ -244,10 +251,10 @@
                                                         <div class="subchild-dropdown-main position-relative">
                                                             <i class="ri-arrow-left-s-line"></i> Grade IV
                                                             <ul class="subchild-dropdown-items py-2">
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{ route('curriculam', ['id' => 7]) }}" class="dropdown-item">
                                                                     <li>Corriculam</li>
                                                                 </a>
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{route('assesment',['id'=>7])}}" class="dropdown-item">
                                                                     <li>Assessment Process</li>
                                                                 </a>
                                                                 <a href="#" class="dropdown-item">
@@ -260,10 +267,10 @@
                                                         <div class="subchild-dropdown-main position-relative">
                                                             <i class="ri-arrow-left-s-line"></i> Grade V
                                                             <ul class="subchild-dropdown-items py-2">
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{ route('curriculam', ['id' => 8]) }}" class="dropdown-item">
                                                                     <li>Corriculam</li>
                                                                 </a>
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{route('assesment',['id'=>8])}}" class="dropdown-item">
                                                                     <li>Assessment Process</li>
                                                                 </a>
                                                                 <a href="#" class="dropdown-item">
@@ -276,10 +283,10 @@
                                                         <div class="subchild-dropdown-main position-relative">
                                                             <i class="ri-arrow-left-s-line"></i> Grade VI
                                                             <ul class="subchild-dropdown-items py-2">
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{ route('curriculam', ['id' => 9]) }}" class="dropdown-item">
                                                                     <li>Corriculam</li>
                                                                 </a>
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{route('assesment',['id'=>9])}}" class="dropdown-item">
                                                                     <li>Assessment Process</li>
                                                                 </a>
                                                                 <a href="#" class="dropdown-item">
@@ -299,10 +306,10 @@
                                                         <div class="subchild-dropdown-main position-relative">
                                                             <i class="ri-arrow-left-s-line"></i> Grade VII
                                                             <ul class="subchild-dropdown-items py-2">
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{ route('curriculam', ['id' => 10]) }}" class="dropdown-item">
                                                                     <li>Corriculam</li>
                                                                 </a>
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{route('assesment',['id'=>10])}}" class="dropdown-item">
                                                                     <li>Assessment Process</li>
                                                                 </a>
                                                                 <a href="#" class="dropdown-item">
@@ -315,10 +322,10 @@
                                                         <div class="subchild-dropdown-main position-relative">
                                                             <i class="ri-arrow-left-s-line"></i> Grade VIII
                                                             <ul class="subchild-dropdown-items py-2">
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{ route('curriculam', ['id' => 11]) }}" class="dropdown-item">
                                                                     <li>Corriculam</li>
                                                                 </a>
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{route('assesment',['id'=>11])}}" class="dropdown-item">
                                                                     <li>Assessment Process</li>
                                                                 </a>
                                                                 <a href="#" class="dropdown-item">
@@ -331,10 +338,10 @@
                                                         <div class="subchild-dropdown-main position-relative">
                                                             <i class="ri-arrow-left-s-line"></i> Grade IX
                                                             <ul class="subchild-dropdown-items py-2">
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{ route('curriculam', ['id' => 12]) }}" class="dropdown-item">
                                                                     <li>Corriculam</li>
                                                                 </a>
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{route('assesment',['id'=>12])}}" class="dropdown-item">
                                                                     <li>Assessment Process</li>
                                                                 </a>
                                                                 <a href="#" class="dropdown-item">
@@ -347,10 +354,10 @@
                                                         <div class="subchild-dropdown-main position-relative">
                                                             <i class="ri-arrow-left-s-line"></i> Grade X
                                                             <ul class="subchild-dropdown-items py-2">
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{ route('curriculam', ['id' => 13]) }}" class="dropdown-item">
                                                                     <li>Corriculam</li>
                                                                 </a>
-                                                                <a href="#" class="dropdown-item">
+                                                                <a href="{{route('assesment',['id'=>13])}}" class="dropdown-item">
                                                                     <li>Assessment Process</li>
                                                                 </a>
                                                                 <a href="#" class="dropdown-item">
@@ -377,16 +384,16 @@
                     </div>
                     <div class="nav-social">
                         <ul class="m-auto">
-                            <a class="facebook" href="#">
+                            <a class="facebook" href="{{$siteData->facebook}}">
                                 <li><i class="ri-facebook-circle-fill"></i></li>
                             </a>
-                            <a class="twitter" href="#">
+                            <a class="twitter" href="{{$siteData->twitter}}">
                                 <li><i class="ri-twitter-x-fill"></i></li>
                             </a>
-                            <a class="whatsapp" href="#">
+                            <a class="whatsapp" href="{{$siteData->whatsapp}}">
                                 <li><i class="ri-whatsapp-fill"></i></li>
                             </a>
-                            <a class="youtube" href="#">
+                            <a class="youtube" href="{{$siteData->youtube}}">
                                 <li><i class="ri-youtube-fill"></i></li>
                             </a>
                         </ul>

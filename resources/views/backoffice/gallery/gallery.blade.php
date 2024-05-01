@@ -41,22 +41,38 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                               
+                                                @php
+                                                    use App\Models\Gallery; 
+                                                @endphp
+                                                @foreach ($gallary_titles as $titles)
+                                                    
+                                                
                                                     <tr>
-                                                        <td></td>
-                                                        <td></td>
+                                                        <td>{{$loop->index+1}}</td>
+                                                        <td>{{$titles->title}}</td>
+                                                        @php
+                                                            
+                                                            $images = Gallery::where('gallery_title',$titles->id)->get();
+                                                           
+                                                        @endphp
+                                                        <td>
+                                                            @foreach ($images as $image)
+                                                            <img src="{{$image->image}}" alt="" style="width: 40px;height:auto" loading="lazy"><span><a href="{{route('delete.singleImage',['id'=>$image->id])}}"><i class="mdi mdi-delete"
+                                                                style=" padding: 3px; color: red; font-size: 15px; cursor: pointer;margin-left:-5px "></i></a></span>
+                                                            @endforeach
+                                                        </td>
                                                         <td>
                                                             <div class="d-flex justify-content-center ">
-                                                                <a href="" data-log = ''  id="bannerUpdate"
+                                                                {{-- <a href="" data-log = ''  id="bannerUpdate"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#editModal" class="edit_log"
                                                                     style="margin-right: 5px;">
 
                                                                     <i class="mdi mdi-account-edit-outline" 
                                                                         style="background: green;padding: 3px;color: white;font-size: 15px;cursor: pointer;border-radius: 3px; "></i>
-                                                                </a>
+                                                                </a> --}}
 
-                                                                <a id="delete-log" href=""
+                                                                <a id="delete-log" href="{{route('delete.gallery',['id'=>$titles->id])}}"
                                                                     onclick="return confirm('Delete?')">
                                                                     <i class="mdi mdi-delete"
                                                                         style="background: red; padding: 3px; color: white; font-size: 15px; cursor: pointer; border-radius: 3px;"></i>
@@ -64,7 +80,7 @@
                                                             </div>
                                                         </td> 
                                                     </tr>
-                                                
+                                                @endforeach
 
                                             </tbody>
                                         </table>
@@ -93,43 +109,32 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('add.gallery')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    
+
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Select Album</label><span class="text-danger"> *</span>
+                                        <div class="d-flex gap-2">
+                                            <select class="form-select" name="album" aria-label="Default select example" required>
+                                                <option class="text-center" selected disabled>--------Select--------</option>
+                                                @foreach ($gallary_titles as $gallary_title)
+                                                    <option value="{{$gallary_title->id}}">{{$gallary_title->title}}</option>
+                                                @endforeach
+                                            </select>
+                                          <button type="button" class="btn btn-primary waves-effect waves-light"  data-bs-toggle="modal" data-bs-target="#addAlbum">+</button>
+                                        </div>
+                                        
+                                    </div>
+                                    @error('album')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">News image</label><span class="text-danger"> *</span>
                                         <input type="file" class="form-control" id="banner_img"
-                                            aria-describedby="emailHelp" name="image" placeholder="Banner image" accept="image/*">
+                                            aria-describedby="emailHelp" name="image[]" placeholder="Banner image" accept="image/*" multiple required>
                                     </div>
                                     @error('image')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-
-
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">News title</label><span class="text-danger"> *</span>
-                                        <input type="text" class="form-control" id="" name="title"
-                                            placeholder="News title">
-                                    </div>
-                                    @error('title')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">News sub-title</label><span class="text-danger"> *</span>
-                                        <input type="text" class="form-control" id="" name="sub_title"
-                                            placeholder="News sub-title">
-                                    </div>
-                                    @error('sub_title')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">News Date</label><span class="text-danger"> *</span>
-                                        <input type="date" class="form-control" id="" name="date"
-                                            placeholder="News sub-title">
-                                    </div>
-                                    @error('date')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
 
@@ -148,7 +153,7 @@
 
 
 
-                {{-- edit banner moddla  --}}
+
                 
                 <!-- sample modal content -->
                 <div id="editModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -217,6 +222,45 @@
 
     </div>
 
+
+
+<!-- sample modal content -->
+    <div id="addAlbum" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="myModalLabel">Add new Album
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+                <form action="{{route('add.album')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Album name</label><span class="text-danger"> *</span>
+                        <input type="text" class="form-control" id=""
+                            aria-describedby="emailHelp" name="album" placeholder="Enter album name" >
+                    </div>
+                    @error('image')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light waves-effect"
+                    data-bs-dismiss="modal">Close</button>
+                <button type="submit"
+                    class="btn btn-primary waves-effect waves-light">Submit</button>
+            </div>
+
+        </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 @push('scripts')

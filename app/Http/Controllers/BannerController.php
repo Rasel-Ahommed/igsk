@@ -16,26 +16,26 @@ class BannerController extends Controller
     }
 
     // store 
-    // public function store(Request $request){
-    //     $request->validate([
-    //         'code_line' => ['required', 'string', 'max:255'],
-    //         'image' => 'required|image|mimes:jpeg,png,jpg,webp,gif'
-    //     ]);
+    public function store(Request $request){
+        $request->validate([
+            'code_line' => ['required', 'string', 'max:255'],
+            'image' => 'required|image|mimes:jpeg,png,jpg,webp,gif'
+        ]);
 
-    //     // Upload and handle image
-    //     $path = $this->uploadImage($request, 'image', 'images');
+        // Upload and handle image
+        $path = $this->uploadImage($request, 'image', 'images');
 
-    //     if ($path) {
-    //         $relativePath = str_replace(public_path(), '', $path);
-    //         $data['image'] = $relativePath;
-    //     }
+        if ($path) {
+            $relativePath = str_replace(public_path(), '', $path);
+            $data['image'] = $relativePath;
+        }
 
-    //     $data['code_line'] = $request->code_line;
+        $data['code_line'] = $request->code_line;
 
-    //     Banner::create($data);
+        Banner::create($data);
 
-    //     return redirect()->back()->with('success', 'Banner add successfully');
-    // }
+        return redirect()->back()->with('success', 'Banner add successfully');
+    }
 
 
     public function update(Request $request){
@@ -70,20 +70,20 @@ class BannerController extends Controller
     }
 
 
-    // public function destroy($id){
-    //     $data = Banner::findOrFail($id);
+    public function destroy($id){
+        $data = Banner::findOrFail($id);
 
-    //     if($data){
-    //         $imagePath = $data->image;
+        if($data){
+            $imagePath = $data->image;
                 
-    //         // Check if the image file exists and delete it
-    //         if (file_exists($imagePath)) {
-    //             unlink($imagePath);
-    //         }
-    //         $data->delete();
+            // Check if the image file exists and delete it
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+            $data->delete();
 
-    //         return redirect()->back()->with('delete', 'Banner delete successfully');
-    //     }
-    // }
+            return redirect()->back()->with('delete', 'Banner delete successfully');
+        }
+    }
 
 }

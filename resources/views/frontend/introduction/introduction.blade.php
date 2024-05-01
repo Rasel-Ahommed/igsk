@@ -14,7 +14,7 @@
         <div id="founder_speech_box">
             <img class="founder-img" src="{{asset('frontendData/asset/image/myImg/founder.png')}}" alt="Founder" loading="lazy">
             <h4>Founding Director’s Speech</h4>
-            <h5>Alexandra Reynolds</h5>
+            <h5>Rudaba Raihan</h5>
             <p>
                 Welcome to International Grammar School, Khulna. Parents are indeed the best teachers for a child
                 yet in
