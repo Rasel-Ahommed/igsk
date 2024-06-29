@@ -73,6 +73,20 @@
                             <span>FAQs</span>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="mdi mdi-view-dashboard"></i>
+                            <span>Site Data</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="{{route('director.speech.igsk')}}"> Diretor Speech</a></li>
+                            <li><a href="{{route('about.igsk')}}"> About IGSK & Rules</a></li>
+                            <li><a href="{{route('admissionProcess.Librarie')}}"> Admission Process & Libraries</a></li>
+                            <li><a href="{{route('team.card.content')}}">Our Team Card Content</a></li>
+                        </ul>
+                    </li>
+
                     <li>
                         <a href="javascript: void(0);" class="has-arrow waves-effect">
                             <i class="mdi mdi-view-dashboard"></i>

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Traits\ImageUploadTrait;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Database\QueryException;
 
 
 class EmployeeController extends Controller
@@ -42,31 +44,43 @@ class EmployeeController extends Controller
             
             
         ]);
-        // Upload and handle image
-        $path = $this->uploadImage($request, 'image', 'images');
-        $data = [
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'position' => $request->position,
-            'department' => $request->department,
-            'experience' => $request->experience,
-            'education' => $request->education,
-            'school_type' => $request->school_type,
-            'team' => $request->team,
-        ];
-        
-        if ($path) {
-            $relativePath = str_replace(public_path(), '', $path);
-            
-            $data['image'] = $relativePath;
+        try {
+            // Upload and handle image
+            $path = $this->uploadImage($request, 'image', 'images');
+            $data = [
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'position' => $request->position,
+                'department' => $request->department,
+                'experience' => $request->experience,
+                'education' => $request->education,
+                'school_type' => $request->school_type,
+                'team' => $request->team,
+            ];
+    
+            if ($path) {
+                $relativePath = str_replace(public_path(), '', $path);
+                $data['image'] = $relativePath;
+            }
+    
+            Employee::create($data);
+    
+            return redirect()->back()->with('success', 'Employee added successfully');
+        } catch (QueryException $e) {
+            Log::error($e->getMessage()); // Log the error for debugging
+    
+            if ($e->errorInfo[1] == 1062) {
+                return redirect()->back()->withInput()->with('delete', 'This email is already associated with an employee.');
+            } else {
+                return redirect()->back()->withInput()->with('delete', 'Failed to add employee. Please try again later.');
+            }
+        } catch (\Exception $e) {
+            Log::error($e->getMessage()); // Log the error for debugging
+    
+            return redirect()->back()->withInput()->with('delete', 'An unexpected error occurred. Please try again later.');
         }
-        
-
-        Employee::create($data);
-
-        return redirect()->back()->with('success', 'Employees add successfully');
     }
 
 
@@ -87,38 +101,34 @@ class EmployeeController extends Controller
             'team' => ['required',],
         ]);
         
-        $data = Employee::findOrFail($request->id);
-        
-        if($request->hasFile('image')){
-            // Upload and handle image
-            $path = $this->uploadImage($request, 'image', 'images');
-            
-            if ($path) {
-                $relativePath = str_replace(public_path(), '', $path);
-                $imagePath = $data->image;
-                
-                // Check if the image file exists and delete it
-                if (file_exists($imagePath)) {
-                    unlink($imagePath);
+        try {
+            $data = Employee::findOrFail($request->id);
+    
+            if($request->hasFile('image')){
+                // Upload and handle image
+                $path = $this->uploadImage($request, 'image', 'images');
+    
+                if ($path) {
+                    $relativePath = str_replace(public_path(), '', $path);
+                    $imagePath = $data->image;
+                    
+                    // Check if the image file exists and delete it
+                    if (file_exists($imagePath)) {
+                        unlink($imagePath);
+                    }
+    
+                    $data->image = $relativePath;
                 }
-                
-                $data->image = $relativePath;
             }
+    
+            $data->fill($request->except('id'))->save();
+    
+            return redirect()->back()->with('success', 'Employee updated successfully');
+        } catch (\Exception $e) {
+            Log::error($e->getMessage()); // Log the error for debugging
+    
+            return redirect()->back()->withInput()->with('error', 'Failed to update employee. Please try again later.');
         }
-        $data->first_name = $request->first_name;
-        $data->last_name = $request->last_name;
-        $data->email = $request->email;
-        $data->phone = $request->phone;
-        $data->position = $request->position;
-        $data->department = $request->experience;
-        $data->experience = $request->department;
-        $data->education = $request->education;
-        $data->school_type = $request->school_type;
-        $data->team = $request->team;
-        $data->save();
-
-        return redirect()->back()->with('success', 'Employee updated successfully');
-        
     }
 
     public function destroy($id){

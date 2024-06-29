@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AllUsersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\NewesController;
@@ -9,17 +8,20 @@ use App\Http\Controllers\JoinUSController;
 use App\Http\Controllers\BackFaqController;
 use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AllUsersController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ShortInfoController;
 use App\Http\Controllers\SiteSettingController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\frontend\FaqController;
+use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\JoinController;
 use App\Http\Controllers\BackCurriculumController;
 use App\Http\Controllers\frontend\RulesController;
 use App\Http\Controllers\frontend\StaffController;
 use App\Http\Controllers\frontend\NoticeController;
+use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\frontend\FacultyController;
 use App\Http\Controllers\frontend\GalleryController;
 use App\Http\Controllers\frontend\LibraryController;
@@ -28,13 +30,16 @@ use App\Http\Controllers\AssessmentProcessController;
 use App\Http\Controllers\BackofficeGalleryController;
 use App\Http\Controllers\frontend\AdmissionController;
 use App\Http\Controllers\frontend\AssesmentController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\frontend\CurriculamController;
 use App\Http\Controllers\frontend\AboutSchoolController;
 use App\Http\Controllers\frontend\IntroductionController;
 use App\Http\Controllers\frontend\TeacherStaffController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\CardContentController;
 use App\Http\Controllers\frontend\Co_curriculamController;
 use App\Http\Controllers\frontend\GalleryDetailsController;
-use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\SiteDataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -283,7 +288,32 @@ Route::middleware(['auth'])->group(function () {
     // all user 
     Route::get('all-users', [AllUsersController::class, 'index'])->name('backoffice.viewUser');
     Route::get('delete-users/{id}', [AllUsersController::class, 'destroy'])->name('delete.user');
+    
+    Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
+
+    //director speech
+    Route::get('director-speech-igsk', [SiteDataController::class, 'index'])->name('director.speech.igsk');
+    Route::post('update-directorSpeech/{id}', [SiteDataController::class, 'updateDirectorSpeech'])->name('update.directorSpeech');
+    Route::post('update-whyIGSK/{id}', [SiteDataController::class, 'updateWhyIgsk'])->name('update.whyIGSK');
+    
+
+    // about igsk 
+    Route::get('about-igsk', [SiteDataController::class, 'aboutIndex'])->name('about.igsk');
+    Route::post('update-aboutIgsk/{id}', [SiteDataController::class, 'updateAboutIgsk'])->name('update.aboutIgsk');
+    Route::post('update-rules-for-students/{id}', [SiteDataController::class, 'updateRulesForStudents'])->name('update.rulesForStudents');
+    Route::post('update-rules-for-parents/{id}', [SiteDataController::class, 'updateRulesForParents'])->name('update.rulesForParents');
+    
+    // AdmissionProcess Librarie
+    Route::get('admissionProcess-Librarie', [SiteDataController::class, 'admissionIndex'])->name('admissionProcess.Librarie');
+    Route::post('update-admissionProcess/{id}', [SiteDataController::class, 'updateAdmissionProcess'])->name('update.admissionProcess');
+    Route::post('update-library/{id}', [SiteDataController::class, 'updateLibrary'])->name('update.library');
+    
+
+    // our team card content 
+    Route::get('team-card-content', [CardContentController::class, 'index'])->name('team.card.content');
+    Route::post('update-cardContent', [CardContentController::class, 'update'])->name('update.CardContent');
+   
 });
 
 
@@ -291,3 +321,14 @@ Route::middleware(['auth'])->group(function () {
 //                     backend routes end
 // ====================================================================================
 
+Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
+                ->name('password.request');
+
+    Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
+                ->name('password.email');
+
+    Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
+                ->name('password.reset');
+
+    Route::post('reset-password', [NewPasswordController::class, 'store'])
+                ->name('password.store');

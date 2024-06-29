@@ -14,6 +14,8 @@ class Notice extends Model
     protected $fillable = [
         'image',
         'title',
-        'details'
+        'details',
+        'notice_date',
+        'week'
     ];
 }

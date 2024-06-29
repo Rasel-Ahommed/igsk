@@ -148,7 +148,7 @@
 @endif
 
 {{-- error massage  --}}
-@if (Session::has('error'))
+@if (Session::has('errors'))
     <script>
         toastr.options = {
             'progressBar': true,
@@ -156,7 +156,7 @@
             "positionClass": "toast-top-right",
             "marginTop": "10rem",
         }
-        toastr.dengar("{{ Session::get('error') }}");
+        toastr.dengar("{{ Session::get('errors') }}");
         var toastrContainer = document.querySelector('.toast-top-right');
         toastrContainer.style.marginTop = '4.5rem';
     </script>

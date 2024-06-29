@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Notice;
-use Illuminate\Http\Request;
 use carbon\carbon;
+use App\Models\Notice;
+use Carbon\Traits\Date;
+use Illuminate\Http\Request;
 use App\Traits\ImageUploadTrait;
 
 class NoticeControllerController extends Controller
@@ -21,7 +22,19 @@ class NoticeControllerController extends Controller
             'image' => 'required|mimes:pdf',
             'title' => ['required', 'string', 'max:255'],
             'info_details' => ['required', 'string', 'max:255'],
+            'date' => ['required'],
         ]);
+
+        // $week = Carbon::parse($request->date)->weekNumberInMonth;
+        
+        // get week from the date
+        $date = Carbon::parse($request->date);
+        $date->setWeekStartsAt(Carbon::SATURDAY);
+        $date->setWeekStartsAt(Carbon::FRIDAY);
+        
+        $weekNumber = $date->weekOfMonth;
+        
+        
 
         // Upload and handle image
         $path = $this->uploadImage($request, 'image', 'images');
@@ -33,6 +46,8 @@ class NoticeControllerController extends Controller
 
         $data['title'] = $request->title;
         $data['details'] = $request->info_details;
+        $data['notice_date'] = $request->date;
+        $data['week'] = $weekNumber;
 
         Notice::create($data);
 
@@ -65,8 +80,19 @@ class NoticeControllerController extends Controller
                 $data->image = $relativePath;
             }
         }
+
+        // get week from the date
+        $date = Carbon::parse($request->date);
+        $date->setWeekStartsAt(Carbon::SATURDAY);
+        $date->setWeekStartsAt(Carbon::FRIDAY);
+        
+        $weekNumber = $date->weekOfMonth;
+
         $data->title = $request->title;
         $data->details = $request->edit_info_details;
+        $data->notice_date = $request->date;
+
+        $data->week =  $weekNumber;
 
         $data->save();
 

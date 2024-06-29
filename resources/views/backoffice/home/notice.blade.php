@@ -35,6 +35,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
+                                                    <th data-priority="1">Notice date</th>
                                                     <th data-priority="1">Notice title</th>
                                                     <th data-priority="3">Notice details</th>
                                                     <th data-priority="3">Notice pdf</th>
@@ -46,6 +47,7 @@
                                                     
                                                     <tr>
                                                         <th>{{$loop->index + 1}}</th>
+                                                        <td>{{$notice->notice_date}}</td>
                                                         <td>{{$notice->title}}</td>
                                                         <td>{{$notice->details}}</td>
                                                         <td><a href="{{$notice->image}}" target="_blank"><button class="btn btn-primary waves-effect waves-light">View</button></a></td>
@@ -112,6 +114,15 @@
 
 
                                     <div class="form-group">
+                                        <label for="exampleInputPassword1">Notice date</label><span class="text-danger"> *</span>
+                                        <input type="date" class="form-control" id="code-line" name="date"
+                                            placeholder="Notice title">
+                                    </div>
+                                    @error('date')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+
+                                    <div class="form-group">
                                         <label for="exampleInputPassword1">Notice title</label><span class="text-danger"> *</span>
                                         <input type="text" class="form-control" id="code-line" name="title"
                                             placeholder="Notice title">
@@ -169,6 +180,15 @@
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
 
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Notice date</label><span class="text-danger"> *</span>
+                                        <input type="date" class="form-control" id="date" name="date"
+                                            placeholder="Notice title">
+                                    </div>
+                                    @error('date')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+
 
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Notice title</label><span class="text-danger"> *</span>
@@ -213,10 +233,12 @@
 
                 $('#noticeTitle').val('');
                 $('#details').val('');
+                $('#date').val('');
                 // CKEDITOR.instances['details'].setData('');
 
                 $('#id').val(data.id);
                 $('#noticeTitle').val(data.title);
+                $('#date').val(data.notice_date);
                 CKEDITOR.instances['details'].setData(data.details);
 
             });
